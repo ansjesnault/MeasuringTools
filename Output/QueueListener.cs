@@ -45,7 +45,20 @@ namespace MeasuringTools.Output
         /// <summary>
         /// Our standard Queue waiting to be processed.
         /// </summary>
-        public ConcurrentQueue<T> Queue { get; protected set; }
+        public ConcurrentQueue<T> Queue { get; protected set; } = new ConcurrentQueue<T>();
+
+        /// <summary>
+        /// Used to stop the thread.
+        /// </summary>
+        private volatile bool _stop = false;
+
+        /// <summary>
+        /// Stop the running thread.
+        /// </summary>
+        public void StopListening()
+        {
+            _stop = true;
+        }
 
         /// <summary>
         /// Call this to start the thread waiting to dequeue ASAP
@@ -53,7 +66,8 @@ namespace MeasuringTools.Output
         /// </summary>
         public void StartListening()
         {
-            Queue = new ConcurrentQueue<T>();
+            _stop = false;
+
             var t = new Thread(Listen);
             t.IsBackground = true;
             t.Priority = ThreadPriority.BelowNormal;
@@ -65,7 +79,7 @@ namespace MeasuringTools.Output
         /// </summary>
         private void Listen()
         {
-            while (true)
+            while (!_stop)
             {
                 T val;
                 if (Queue.TryDequeue(out val))

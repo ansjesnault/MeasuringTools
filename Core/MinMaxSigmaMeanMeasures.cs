@@ -166,10 +166,14 @@ namespace MeasuringTools.Core
         public override void AddMeasure(double val)
         {
             CustomResetCheckAction?.Invoke(this);
+
             _current = val;
+
             MinMax(val);
             UpdateMovingMean(val);
             UpdateMovingSigma(val);
+
+            RaiseMeasureAdded();
         }
 
         /// <summary>
