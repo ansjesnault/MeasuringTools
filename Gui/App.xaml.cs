@@ -19,6 +19,8 @@ namespace MeasuringTools.Gui
             // handle command line args*
             PipeClient client = new PipeClient();
             client.PipeClientMain(e.Args);
+
+            var test = new Test();
         }
     }
 }

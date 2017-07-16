@@ -8,14 +8,17 @@ namespace MeasuringTools.Output
     /// an <see cref="AbstractMeasures"/> or a <see cref="MeasuresAggregator{U_meas}"/>
     /// to any changes in order to auto broadcast these changes to all subscribed <see cref="QueueListener{T}"/>.
     /// </summary>
-    public class MeasuresMulticaster : QueueMulticaster<AbstractMeasures>
+    public class MeasuresBroadcaster
     {
+        private QueueMulticaster<AbstractMeasures> _measureMulticaster = new QueueMulticaster<AbstractMeasures>();
+
         /// <summary>
         /// Constructor with <see cref="AbstractMeasures"/>.
         /// </summary>
         /// <param name="measure"></param>
-        public MeasuresMulticaster(AbstractMeasures measure)
+        public MeasuresBroadcaster(QueueListener<AbstractMeasures> listerner, AbstractMeasures measure)
         {
+            _measureMulticaster.Subscribe(listerner);
             measure.MeasureAdded += OnMeasureAdded;
         }
 
@@ -23,8 +26,9 @@ namespace MeasuringTools.Output
         /// Constructor with <see cref="MeasuresAggregator<AbstractMeasures>"/>.
         /// </summary>
         /// <param name="measuresList"></param>
-        public MeasuresMulticaster(MeasuresAggregator<AbstractMeasures> measuresList)
+        public MeasuresBroadcaster(QueueListener<AbstractMeasures> listerner, IMeasuresAggregator<AbstractMeasures> measuresList)
         {
+            _measureMulticaster.Subscribe(listerner);
             foreach (var measure in measuresList)
             {
                 measure.MeasureAdded += OnMeasureAdded;
@@ -38,7 +42,7 @@ namespace MeasuringTools.Output
         /// <param name="e"></param>
         private void OnMeasureAdded(object sender, EventArgs e)
         {
-            this.Broadcast((AbstractMeasures)sender);
+            _measureMulticaster.Broadcast((AbstractMeasures)sender);
         }
     }
 }

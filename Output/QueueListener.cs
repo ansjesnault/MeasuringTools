@@ -1,22 +1,4 @@
-﻿///<example >
-/// static void Main(string[] args)
-/// {
-///     var multicaster = new QueueMulticaster<int>();
-///
-///     var listener1 = new QueueListener(); //Make a couple of listening Q objects. 
-///     listener1.StartListening();
-///     multicaster.Subscribe(listener1);
-///
-///     var listener2 = new QueueListener();
-///     listener2.StartListening();
-///     multicaster.Subscribe(listener2);
-///
-///     multicaster.Broadcast(6); //Send a 6 to both concurrent Queues. 
-///     Console.ReadLine();
-///    }
-///</example>
-///
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Threading;
 
@@ -40,7 +22,7 @@ namespace MeasuringTools.Output
     /// <see cref="Execute(T)"/> each dequeued value to print it in console (a consumer).
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class QueueListener<T> : IQueueListener<T>
+    public abstract class QueueListener<T> : IQueueListener<T>
     {
         /// <summary>
         /// Our standard Queue waiting to be processed.
@@ -94,10 +76,6 @@ namespace MeasuringTools.Output
         /// By default write the data into the console.
         /// </summary>
         /// <param name="val"></param>
-        public virtual void Execute(T val)
-        {
-            Console.WriteLine(val);
-        }
+        public abstract void Execute(T val);
     }
-
 }

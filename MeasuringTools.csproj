@@ -59,7 +59,9 @@
     </ApplicationDefinition>
     <Compile Include="Output\Ipc\PipeClient.cs" />
     <Compile Include="Output\Ipc\PipeServer.cs" />
-    <Compile Include="Output\MeasuresMulticaster.cs" />
+    <Compile Include="Output\MeasureListener.cs" />
+    <Compile Include="Output\MeasuresCSVOutputListener.cs" />
+    <Compile Include="Output\MeasuresBroadcaster.cs" />
     <Compile Include="Output\QueueListener.cs" />
     <Compile Include="Output\QueueMulticaster.cs" />
     <Compile Include="Test.cs" />

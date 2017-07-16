@@ -1,4 +1,5 @@
 ﻿using MeasuringTools.Core;
+using MeasuringTools.Output;
 
 namespace MeasuringTools
 {
@@ -29,6 +30,29 @@ namespace MeasuringTools
                 var measureStringRepresentation = measures.ToString();
                 var sameAgainAverage = ((MinMaxSigmaMeanMeasures)(measures))?.MovingMean;
             }
+
+            // output config
+            var listenToOutputInConsole = new MeasureConsoleOutputListener();
+            listenToOutputInConsole.StartListening();
+            var autoBroadCastToConsole = new MeasuresBroadcaster(listenToOutputInConsole, cast);
+
+            var listenToOutputInCVS = new MeasuresCSVOutputListener();
+            listenToOutputInCVS.StartListening();
+            var autoBroadCastToCSV = new MeasuresBroadcaster(listenToOutputInCVS, measure);
+
+            // output test
+            cast[ChronoStore.ChronoSlot2].Measures.AddMeasure(0.01d);
+            var tmp = cast[ChronoStore.ChronoSlot2];
+            tmp.Start();
+            cast[MeasuresStore.MeasuresSlot1].AddMeasure(0.02d); // Why took so much time???!!
+            tmp.Stop();
+
+            measure.AddMeasure(0.03d);
+            measure.AddMeasure(0.04d);
+
+            cast[ChronoStore.ChronoSlot2].Restart();
+            measure.AddMeasure(0.05d);
+            cast[ChronoStore.ChronoSlot2].Stop();
         }
     }
 }

@@ -1,23 +1,4 @@
-﻿///<example >
-/// static void Main(string[] args)
-/// {
-///     var multicaster = new QueueMulticaster<int>();
-///
-///     var listener1 = new QueueListener(); //Make a couple of listening Q objects. 
-///     listener1.StartListening();
-///     multicaster.Subscribe(listener1);
-///
-///     var listener2 = new QueueListener();
-///     listener2.StartListening();
-///     multicaster.Subscribe(listener2);
-///
-///     multicaster.Broadcast(6); //Send a 6 to both concurrent Queues. 
-///     Console.ReadLine();
-///    }
-///</example>
-///
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MeasuringTools.Output
 {
