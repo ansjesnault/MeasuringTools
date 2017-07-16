@@ -57,9 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\Output\IQueueListener.cs" />
-    <Compile Include="Ipc\PipeClient.cs" />
-    <Compile Include="Ipc\PipeServer.cs" />
+    <Compile Include="Output\Ipc\PipeClient.cs" />
+    <Compile Include="Output\Ipc\PipeServer.cs" />
+    <Compile Include="Output\QueueListener.cs" />
+    <Compile Include="Output\QueueMulticaster.cs" />
     <Compile Include="Test.cs" />
     <Page Include="Gui\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
