@@ -90,7 +90,8 @@ namespace MeasuringTools.Output
         }
 
         /// <summary>
-        /// Fill free to implement concrete <see cref="AbstractQueueListener{T}"/>.
+        /// Fill free to implement concrete <see cref="AbstractQueueListener{T}"/>.\n
+        /// By default write the data into the console.
         /// </summary>
         /// <param name="val"></param>
         public virtual void Execute(T val)
