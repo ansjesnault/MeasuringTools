@@ -32,13 +32,17 @@ namespace MeasuringTools
             }
 
             // output config
-            var listenToOutputInConsole = new MeasureConsoleOutputListener();
-            listenToOutputInConsole.StartListening();
-            var autoBroadCastToConsole = new MeasuresBroadcaster(listenToOutputInConsole, cast);
+            // here we want to output a list of measures in a CSV file but also in console, all from a dedicated thread listener.
+            var listener = new MeasuresExecutorsListener();
+            listener.RegisterExecutor(new CSVExecutor());
+            listener.RegisterExecutor(new ConsoleOutputExecutor());
+            listener.StartListening();
+            var autoBroadCastToListeners = new AutoMeasuresMulticasterCallback(cast);
+            autoBroadCastToListeners.Subscribe(listener);
 
-            var listenToOutputInCVS = new MeasuresCSVOutputListener();
-            listenToOutputInCVS.StartListening();
-            var autoBroadCastToCSV = new MeasuresBroadcaster(listenToOutputInCVS, measure);
+            var writeToConsole = new ConsoleOutputExecutor();
+            var executors = new AutoMeasuresExecutorsCallback(measure);
+            executors.RegisterExecutor(writeToConsole);
 
             // output test
             cast[ChronoStore.ChronoSlot2].Measures.AddMeasure(0.01d);

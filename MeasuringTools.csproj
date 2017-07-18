@@ -57,11 +57,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Output\AutoMeasuresCallback.cs" />
+    <Compile Include="Output\AutoMeasuresExecutorsCallback.cs" />
+    <Compile Include="Output\ConsoleOutputExecutor.cs" />
+    <Compile Include="Output\IExecutor.cs" />
     <Compile Include="Output\Ipc\PipeClient.cs" />
     <Compile Include="Output\Ipc\PipeServer.cs" />
-    <Compile Include="Output\MeasureListener.cs" />
-    <Compile Include="Output\MeasuresCSVOutputListener.cs" />
-    <Compile Include="Output\MeasuresBroadcaster.cs" />
+    <Compile Include="Output\MeasuresExecutorsListener.cs" />
+    <Compile Include="Output\CSVExecutor.cs" />
+    <Compile Include="Output\AutoMeasuresMulticasterCallback.cs" />
     <Compile Include="Output\QueueListener.cs" />
     <Compile Include="Output\QueueMulticaster.cs" />
     <Compile Include="Test.cs" />

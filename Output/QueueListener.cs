@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace MeasuringTools.Output
@@ -19,7 +20,8 @@ namespace MeasuringTools.Output
     /// <summary>
     /// Represent a listener which run on its own thread
     /// and poll the <see cref="IQueueListener{T}.Queue"/> in order to
-    /// <see cref="Execute(T)"/> each dequeued value to print it in console (a consumer).
+    /// manipulate/execute each dequeued value (a consumer).\n
+    /// You have to implement <see cref="Execute(T)"/> in derived class.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class QueueListener<T> : IQueueListener<T>
@@ -50,9 +52,10 @@ namespace MeasuringTools.Output
         {
             _stop = false;
 
-            var t = new Thread(Listen);
-            t.IsBackground = true;
-            t.Priority = ThreadPriority.BelowNormal;
+            var t = new Thread(Listen)
+            {
+                IsBackground = true
+            };
             t.Start();
         }
 
@@ -72,10 +75,9 @@ namespace MeasuringTools.Output
         }
 
         /// <summary>
-        /// Fill free to implement concrete <see cref="AbstractQueueListener{T}"/>.\n
-        /// By default write the data into the console.
+        /// Have to be implemented in derived class to manipulate the data in this dedicated thread instance.
         /// </summary>
         /// <param name="val"></param>
-        public abstract void Execute(T val);
+        protected abstract void Execute(T val);
     }
 }
