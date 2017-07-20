@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!--*-->
+    <id>MeasuringTools</id>
+    <!--*-->
+    <version>0.0.0.1</version>
+    <title>.NET MeasuringTools</title>
+    <!--*-->
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <!--
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--*-->
+    <description>$description$</description>
+    <!--*-->
+    <releaseNotes>First&amp;#x0020;alpha&amp;#x0020;package&amp;#x0020;(no&amp;#x0020;link&amp;#x0020;to&amp;#x0020;WPF&amp;#x0020;D3graph)</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>
+    </tags>
+    <dependencies>
+   <group targetFramework="net452">
+      <dependency id="DynamicDataDisplay" version="0.3.0.1" />
+   </group>
+</dependencies>
+  </metadata>
+</package>

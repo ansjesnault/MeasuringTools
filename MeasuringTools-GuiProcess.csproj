@@ -7,7 +7,7 @@
     <ProjectGuid>{7149C88E-C88D-424E-BFC1-E2C678E35D38}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MeasuringTools</RootNamespace>
-    <AssemblyName>MeasuringTools</AssemblyName>
+    <AssemblyName>MeasuringTools-GuiProcess</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -57,34 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Output\AutoMeasuresCallback.cs" />
-    <Compile Include="Output\AutoMeasuresExecutorsCallback.cs" />
-    <Compile Include="Output\ConsoleOutputExecutor.cs" />
-    <Compile Include="Output\IExecutor.cs" />
-    <Compile Include="Output\Ipc\PipeClient.cs" />
-    <Compile Include="Output\Ipc\PipeServer.cs" />
-    <Compile Include="Output\MeasuresExecutorsListener.cs" />
-    <Compile Include="Output\CSVExecutor.cs" />
-    <Compile Include="Output\AutoMeasuresMulticasterCallback.cs" />
-    <Compile Include="Output\QueueListener.cs" />
-    <Compile Include="Output\QueueMulticaster.cs" />
-    <Compile Include="Test.cs" />
     <Page Include="Gui\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Core\AbstractMeasures.cs" />
-    <Compile Include="Core\ChronoMeasures.cs" />
-    <Compile Include="Core\ChronoStore.cs" />
-    <Compile Include="Core\IChronoMeasures.cs" />
-    <Compile Include="Core\IMeasures.cs" />
-    <Compile Include="Core\IMeasuresAggregator.cs" />
-    <Compile Include="Core\MeasuresAggregator.cs" />
-    <Compile Include="Core\MeasuresAggregatorStores.cs" />
-    <Compile Include="Core\MeasuresStore.cs" />
-    <Compile Include="Core\MinMaxSigmaMeanMeasures.cs" />
-    <Compile Include="Core\MinMaxSigmaMeanMeasuresCollection.cs" />
-    <Compile Include="Core\Optimizer.cs" />
     <Compile Include="Gui\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,15 +89,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="package.nuspec" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Gui\App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="MeasuringTools\MeasuringTools.csproj">
+      <Project>{b9b1e3ee-c5f5-49e7-9f75-84e51c8b9de2}</Project>
+      <Name>MeasuringTools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

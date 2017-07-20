@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasuringTools", "MeasuringTools.csproj", "{7149C88E-C88D-424E-BFC1-E2C678E35D38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasuringTools-GuiProcess", "MeasuringTools-GuiProcess.csproj", "{7149C88E-C88D-424E-BFC1-E2C678E35D38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasuringTools", "MeasuringTools\MeasuringTools.csproj", "{B9B1E3EE-C5F5-49E7-9F75-84E51C8B9DE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7149C88E-C88D-424E-BFC1-E2C678E35D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7149C88E-C88D-424E-BFC1-E2C678E35D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7149C88E-C88D-424E-BFC1-E2C678E35D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9B1E3EE-C5F5-49E7-9F75-84E51C8B9DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B1E3EE-C5F5-49E7-9F75-84E51C8B9DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B1E3EE-C5F5-49E7-9F75-84E51C8B9DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B1E3EE-C5F5-49E7-9F75-84E51C8B9DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

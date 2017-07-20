@@ -6,7 +6,7 @@ namespace MeasuringTools.Output
     /// <summary>
     /// Write a measure into the console output.
     /// </summary>
-    class CSVExecutor : IExecutor<AbstractMeasures>
+    public class CSVExecutor : IExecutor<AbstractMeasures>
     {
         /// <summary>
         /// Write a measure into the console output.

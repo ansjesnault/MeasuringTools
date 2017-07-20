@@ -3,7 +3,7 @@
     /// <summary>
     /// Measure interface.
     /// </summary>
-    public interface IMeasures<T>
+    public interface IMeasures<T> where T : struct
     {
         /// <summary>
         /// Add a measure.

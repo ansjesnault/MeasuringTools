@@ -77,6 +77,10 @@ namespace MeasuringTools.Output
 
         /// <summary>
         /// The event callback to broadcast the data to <see cref="QueueListener{T}"/> in their own thread.
+        /// \warning : The registered <see cref="QueueListener{T}"/> 
+        /// will execute/process the referenced data <see cref="AbstractMeasures"/> in another thread, be aware of that 'shared data'.
+        /// \todo : Maybe we want to pass a concrete measure, or even a copy to avoid consurrent access/modification of the same measure instance...
+        /// We also may want to pass a valueType like a struct in order to auto broadcast a measure snapshot...
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
